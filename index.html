@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Livia Vilela | Portfólio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #07070b;
+      --bg-2: #0d0d14;
+      --panel: #11111a;
+      --panel-2: #151522;
+      --text: #f5f3ff;
+      --muted: #b5adc9;
+      --primary: #8b5cf6;
+      --primary-2: #c084fc;
+      --line: rgba(255,255,255,0.08);
+      --shadow: 0 18px 50px rgba(0,0,0,0.45);
+      --radius: 28px;
+      --max: 1160px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(139,92,246,0.20), transparent 30%),
+        radial-gradient(circle at 80% 20%, rgba(192,132,252,0.12), transparent 25%),
+        linear-gradient(180deg, #06060a, #0a0a11 55%, #06060a);
+      min-height: 100vh;
+    }
+
+    .container {
+      width: min(var(--max), 92%);
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(14px);
+      background: rgba(7,7,11,0.7);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 1.2rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+    }
+
+    .logo span {
+      color: var(--primary-2);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: 0.25s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .hero {
+      padding: 72px 0 48px;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 34px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(139,92,246,0.12);
+      border: 1px solid rgba(139,92,246,0.25);
+      color: #ddd6fe;
+      margin-bottom: 22px;
+      font-size: 0.92rem;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      box-shadow: 0 0 16px rgba(139,92,246,0.75);
+    }
+
+    h1 {
+      font-size: clamp(2.8rem, 6vw, 5.4rem);
+      line-height: 0.98;
+      font-weight: 800;
+      letter-spacing: -1.7px;
+      margin-bottom: 18px;
+      max-width: 780px;
+    }
+
+    .hero h1 .accent {
+      color: var(--primary-2);
+    }
+
+    .lead {
+      max-width: 660px;
+      color: var(--muted);
+      font-size: 1.03rem;
+      line-height: 1.9;
+      margin-bottom: 28px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .btn {
+      text-decoration: none;
+      padding: 15px 22px;
+      border-radius: 16px;
+      font-weight: 600;
+      transition: 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .btn-primary {
+      color: white;
+      background: linear-gradient(135deg, #7c3aed, #a855f7);
+      box-shadow: 0 14px 34px rgba(124,58,237,0.35);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+    }
+
+    .btn-outline {
+      color: var(--text);
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.09);
+    }
+
+    .btn-outline:hover {
+      background: rgba(255,255,255,0.06);
+    }
+
+    .hero-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 32px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      inset: auto -40px -40px auto;
+      width: 170px;
+      height: 170px;
+      background: radial-gradient(circle, rgba(139,92,246,0.35), transparent 70%);
+      filter: blur(6px);
+    }
+
+    .avatar-img {
+     width: 160px;
+     height: 160px;
+     border-radius: 24px;
+     object-fit: cover;
+     margin-bottom: 18px;
+     border: 2px solid rgba(192,132,252,0.4);
+     box-shadow: 0 10px 28px rgba(124,58,237,0.38);
+    }
+
+    .hero-card h3 {
+      font-size: 1.35rem;
+      margin-bottom: 10px;
+    }
+
+    .hero-card p,
+    .hero-card li {
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 0.96rem;
+    }
+
+    .mini-points {
+      list-style: none;
+      display: grid;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .mini-points li::before {
+      content: "✦";
+      color: var(--primary-2);
+      margin-right: 10px;
+    }
+
+    section.content-section {
+      padding: 22px 0 40px;
+    }
+
+    .section-head {
+      margin-bottom: 22px;
+    }
+
+    .section-kicker {
+      color: var(--primary-2);
+      font-size: 0.92rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.8px;
+      margin-bottom: 8px;
+    }
+
+    h2 {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      margin-bottom: 10px;
+    }
+
+    .section-desc {
+      max-width: 800px;
+      color: var(--muted);
+      line-height: 1.9;
+    }
+
+    .about-box,
+    .project-card,
+    .skill-card,
+    .contact-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015));
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .about-box {
+      padding: 28px;
+    }
+
+    .about-box p {
+      color: var(--muted);
+      line-height: 1.95;
+      font-size: 1rem;
+    }
+
+    .projects-grid,
+    .skills-grid,
+    .contact-grid {
+      display: grid;
+      gap: 20px;
+    }
+
+    .projects-grid {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+
+    .skills-grid {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    .contact-grid {
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+
+    .project-card,
+    .skill-card,
+    .contact-card {
+      padding: 24px;
+      transition: transform 0.28s ease, border-color 0.28s ease;
+    }
+
+    .project-card:hover,
+    .skill-card:hover,
+    .contact-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(192,132,252,0.32);
+    }
+
+    .project-number,
+    .skill-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 16px;
+      background: rgba(139,92,246,0.12);
+      border: 1px solid rgba(139,92,246,0.18);
+      color: #ddd6fe;
+      font-weight: 700;
+    }
+
+    .project-card h3,
+    .skill-card h3,
+    .contact-card h3 {
+      font-size: 1.08rem;
+      margin-bottom: 10px;
+    }
+
+    .project-card p,
+    .skill-card p,
+    .contact-card p {
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 0.95rem;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .tag {
+      padding: 8px 12px;
+      font-size: 0.85rem;
+      border-radius: 999px;
+      color: #e9ddff;
+      background: rgba(139,92,246,0.11);
+      border: 1px solid rgba(139,92,246,0.20);
+    }
+
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: #ddd6fe;
+      font-weight: 500;
+      transition: 0.25s ease;
+      margin-top: 8px;
+    }
+
+    .social-link:hover {
+      color: white;
+      transform: translateX(4px);
+    }
+
+    .social-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: rgba(139,92,246,0.12);
+      border: 1px solid rgba(139,92,246,0.18);
+      padding: 8px;
+      display: block;
+    }
+
+    footer {
+      padding: 40px 0 50px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: 0.7s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: auto;
+        padding-top: 52px;
+      }
+
+      .nav {
+        flex-direction: column;
+        justify-content: center;
+        padding: 14px 0;
+      }
+
+      .nav-links {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 560px) {
+      h1 {
+        font-size: 2.5rem;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .hero-card,
+      .about-box,
+      .project-card,
+      .skill-card,
+      .contact-card {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="logo">Livia<span>.</span></div>
+      <nav class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#about">Sobre</a>
+        <a href="#skills">Habilidades</a>
+        <a href="#projects">Projetos</a>
+        <a href="#contact">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero container" id="home">
+    <div class="hero-grid">
+      <div class="reveal">
+        <div class="eyebrow">Portfólio pessoal</div>
+        <h1>Olá, eu sou <span class="accent">Livia da Silva Vilela</span></h1>
+        <p class="lead">
+          Estudante de Engenharia da Computação, com interesse em segurança da informação e desenvolvimento de jogos. Gosto de aprender, criar projetos e transformar conhecimento em crescimento profissional.
+        </p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary">Entrar em contato</a>
+          <a href="#projects" class="btn btn-outline">Ver projetos</a>
+        </div>
+      </div>
+
+      <div class="hero-card reveal">
+        <img src="foto.jpeg" alt="Foto de Livia Vilela" class="avatar-img">
+
+        <h3>Resumo profissional</h3>
+        <p>
+          Tenho 19 anos e estou construindo minha trajetória na área da tecnologia com dedicação, criatividade e vontade de evoluir. Meu foco é desenvolver habilidades práticas e criar uma carreira sólida.
+        </p>
+
+        <ul class="mini-points">
+          <li>Responsável, pontual e criativa</li>
+          <li>Conhecimentos básicos em HTML, CSS, JavaScript e C</li>
+          <li>Interesse em Segurança da Informação</li>
+          <li>Interesse em Desenvolvimento de Jogos</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <main class="container">
+    <section class="content-section" id="about">
+      <div class="section-head reveal">
+        <div class="section-kicker">Sobre mim</div>
+        <h2>Construindo meu caminho na tecnologia</h2>
+        <p class="section-desc">
+          Meu nome é Livia da Silva Vilela, tenho 19 anos e sou estudante de Engenharia da Computação. Sou uma pessoa responsável, pontual e criativa, sempre buscando aprender mais e aprimorar minhas habilidades. Tenho interesse em crescer profissionalmente, adquirir experiência prática e construir uma carreira sólida na área da tecnologia.
+        </p>
+      </div>
+
+      <div class="about-box reveal">
+        <p>
+          Meu objetivo é unir dedicação, aprendizado contínuo e experiência acadêmica para me desenvolver como profissional. Ao longo da faculdade, venho participando de projetos que fortalecem meu raciocínio lógico, minha criatividade e minha visão sobre o mercado de tecnologia.
+        </p>
+      </div>
+    </section>
+
+    <section class="content-section" id="skills">
+      <div class="section-head reveal">
+        <div class="section-kicker">Habilidades</div>
+        <h2>Competências e conhecimentos</h2>
+        <p class="section-desc">
+          Essas são algumas das minhas habilidades pessoais e técnicas no momento.
+        </p>
+      </div>
+
+      <div class="skills-grid">
+        <div class="skill-card reveal">
+          <div class="skill-icon">01</div>
+          <h3>HTML e CSS</h3>
+          <p>Conhecimentos básicos para estruturar e estilizar páginas web de forma organizada e visualmente agradável.</p>
+        </div>
+
+        <div class="skill-card reveal">
+          <div class="skill-icon">02</div>
+          <h3>JavaScript</h3>
+          <p>Noções básicas para adicionar interatividade e melhorar a experiência do usuário em projetos web.</p>
+        </div>
+
+        <div class="skill-card reveal">
+          <div class="skill-icon">03</div>
+          <h3>Linguagem C</h3>
+          <p>Conhecimento básico adquirido em atividades acadêmicas e exercícios de lógica e programação.</p>
+        </div>
+
+        <div class="skill-card reveal">
+          <div class="skill-icon">04</div>
+          <h3>Soft skills</h3>
+          <p>Responsabilidade, pontualidade, criatividade e disposição para aprender continuamente.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="projects">
+      <div class="section-head reveal">
+        <div class="section-kicker">Projetos</div>
+        <h2>Experiências e práticas acadêmicas</h2>
+        <p class="section-desc">
+          Alguns projetos e áreas em que venho construindo experiência durante a faculdade.
+        </p>
+      </div>
+
+      <div class="projects-grid">
+        <div class="project-card reveal">
+          <div class="project-number">01</div>
+          <h3>Projetos acadêmicos</h3>
+          <p>Desenvolvimento de atividades e trabalhos da faculdade que contribuíram para meu aprendizado técnico e crescimento prático.</p>
+          <div class="tags">
+            <span class="tag">Faculdade</span>
+            <span class="tag">Programação</span>
+            <span class="tag">Prática</span>
+          </div>
+        </div>
+
+        <div class="project-card reveal">
+          <div class="project-number">02</div>
+          <h3>Criação de jogos</h3>
+          <p>Projetos relacionados a jogos que despertam minha criatividade e reforçam meu interesse em desenvolvimento interativo.</p>
+          <div class="tags">
+            <span class="tag">Jogos</span>
+            <span class="tag">Criatividade</span>
+            <span class="tag">Lógica</span>
+          </div>
+        </div>
+
+        <div class="project-card reveal">
+          <div class="project-number">03</div>
+          <h3>Portfólio pessoal</h3>
+          <p>Este site representa minha apresentação profissional, reunindo informações sobre meu perfil, objetivos e habilidades.</p>
+          <div class="tags">
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">JavaScript</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="contact">
+      <div class="section-head reveal">
+        <div class="section-kicker">Contato</div>
+        <h2>Vamos nos conectar</h2>
+        <p class="section-desc">
+          Você pode me encontrar pelos links abaixo.
+        </p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-card reveal">
+          <h3>LinkedIn</h3>
+          <a href="https://www.linkedin.com/in/lívia-vilela-334999293/" target="_blank" class="social-link">
+            <img
+              class="social-icon"
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg"
+              alt="Ícone do LinkedIn"
+            >
+            <span>Acessar perfil no LinkedIn</span>
+          </a>
+        </div>
+
+        <div class="contact-card reveal">
+          <h3>GitHub</h3>
+          <a href="https://github.com/Livizs" target="_blank" class="social-link">
+            <img
+              class="social-icon"
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
+              alt="Ícone do GitHub"
+            >
+            <span>Acessar perfil no GitHub</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 - Livia da Silva Vilela. Todos os direitos reservados.
+  </footer>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+
+    function revealOnScroll() {
+      const trigger = window.innerHeight - 80;
+
+      reveals.forEach((el) => {
+        const top = el.getBoundingClientRect().top;
+        if (top < trigger) {
+          el.classList.add('active');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', revealOnScroll);
+    window.addEventListener('load', revealOnScroll);
+  </script>
+</body>
+</html>
